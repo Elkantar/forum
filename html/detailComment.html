@@ -1,0 +1,59 @@
+<!--Show Comments-->
+
+{{range .Response}}
+<div class="comments-container">
+    <div class="head">
+        <div class="authors">Author</div>
+        <div class="content">Comments</div>
+    </div>
+
+    <div class="body">
+        <div class="authors">
+            <div class="AnotherUser"><a href="#">{{.UserRep}}</a></div>
+            <div>Role</div>
+            <img src="https://static.wikia.nocookie.net/among-us/images/9/90/Rouge.png/revision/latest?cb=20210918140136&path-prefix=fr"
+                alt="">
+            <div>Posts: <u>4390</u></div>
+            <div>Points: <u>17999</u></div>
+        </div>
+
+        <div class="content">
+            {{.RepText}}
+            <div class="comment">
+                <button id="rep">Reply</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!--Reply input-->
+<form method="POST" action="./detail?{{.ID}}">
+    <div class="comment-area hide" id="reply-area">
+        <textarea name="comment" name="repText" placeholder="reply here ...."></textarea>
+        <input type="submit" value="submit">
+    </div>
+</form>
+
+{{end}}
+
+<div class="setup-like">
+    <span> <u id="liked">1702</u> <button id="likeru"><img
+                src="https://thumbs.gfycat.com/ConsciousBitesizedElver-size_restricted.gif" alt=""></button> and
+        <u>69</u> <button id="dislikeru"><img
+                src="https://media.tenor.com/QkxQpy6gyNgAAAAC/outta-pocket-breakingbad.gif" font-size="5px">
+            <script src="like-dislike.js"></script>
+        </button></span>
+</div>
+<footer>
+
+    <span>&copy; &nbsp;Sussy AmonganeseSUS | All Pepe rights Reserved.</span>
+
+</footer>
+
+<!--script for comment/reply to the original post.-->
+
+<script src="./js/main.js"></script>
+
+</div>

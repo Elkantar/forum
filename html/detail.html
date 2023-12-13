@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
+    <title>Forum - Detail</title>
+
+    <script>
+        function likePost(id) {
+            // Appeler la fonction likePost() en utilisant le paramètre id
+            // Ajouter votre implémentation ici
+            // Exemple : Appeler une API ou effectuer une requête AJAX pour enregistrer le like
+            fetch(`/likepost/${ID}`, { method: 'POST' })
+                .then(response => {
+                    if (response.ok) {
+                        console.log("Liked post with ID: " + id);
+                    } else {
+                        console.error("Failed to like post");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+        }
+
+        function dislikePost(id) {
+            // Appeler la fonction dislikePost() en utilisant le paramètre id
+            // Ajouter votre implémentation ici
+            // Exemple : Appeler une API ou effectuer une requête AJAX pour enregistrer le dislike
+            fetch(`/dislikepost/${ID}`, { method: 'POST' })
+                .then(response => {
+                    if (response.ok) {
+                        console.log("Disliked post with ID: " + id);
+                    } else {
+                        console.error("Failed to dislike post");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+        }
+    </script>
+
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="wrapper">
+            <input type="checkbox" id="btn" hidden>
+            <label for="btn" class="menu-btn">
+                <img id="logo" class="logo"
+                    src="https://seeklogo.com/images/J/jv-jeux-video-logo-26350B04EC-seeklogo.com.png">
+            </label>
+            <nav id="sidebar">
+                <div class="titre">JVC Menu</div>
+                <ul class="list-items">
+                    <li><a href="/HomePage"><i class="nav-list"></i>Home</a></li>
+                    <li><a href="/CreatePost"><i class="nav-list"></i>Create Post</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- <a href="#" class="bar-icon" id="iconBar" onclick="hideIconBar()"><i class="fa fa-bars"></i></a> -->
+        <div class="brand">My Forum</div>
+
+        <!-- connecter username -->
+
+
+    </header>
+
+
+    <p id="a"><b>Welcome to the Forum</b></p>
+    {{range .Row}}
+
+
+    <div class="topic-container">
+
+
+        <div class="body">
+            <div class="authors">
+
+                <div class="username"><a href="#">{{.Username}}</a></div>
+                <div>Topics: {{.Title}}<u></u></div>
+                <div>Posts: {{.Text }}<u></u></div>
+                <div>
+                    <img src="{{.Image}}">
+                </div>
+
+
+
+
+            </div>
+
+            <div class="commentbut">
+                <button id="com">Comment</button>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <form action="/Like" method="POST" class="form-like">
+        <div class="form-example">
+            <input type="hidden" name="likepostid" value="{{.ID}}">
+            <input type="submit" value="Like">
+        </div>
+    </form>
+    <div>Like: {{.Likes }}</div>
+    <form action="/Dislike" method="POST" class="form-dislike">
+        <div class="form-example">
+            <input type="hidden" name="postid" value="{{.ID}}">
+            <input type="submit" value="Dislike">
+        </div>
+    </form>
+    <div>Dislike: {{.Dislikes }}</div>
+
+
+
+
+
+    <!--Comment input-->
+
+    <div class="comment-area hide" id="comment-area">
+        <form method="post" action="./detail?{{.ID}}">
+            <textarea name="repText" placeholder="comment here ...."></textarea>
+            <input type="submit" value="submit">
+        </form>
+    </div>
+
+
+    {{end}}
+
+    <!--Show Comments-->
+
+    {{range .Row}}
+    <div class="comments-container">
+
+        {{range $key, $values := .Comment}}
+        {{range $value := $values}}
+        <div class="body">
+            <div class="authors">
+                <div class="AnotherUser"><a href="#">{{$key}}</a></div>
+                <div>Comment: {{.}}<u></u></div>
+            </div>
+
+        </div>
+        {{end}}
+        {{end}}
+    </div>
+
+    </div>
+
+    <!--Reply input-->
+    <form method="POST" action="./detail?{{.ID}}">
+        <div class="comment-area hide" id="reply-area">
+            <textarea name="comment" name="repText" placeholder="reply here ...."></textarea>
+            <input type="submit" value="submit">
+        </div>
+    </form>
+    {{end}}
+
+
+
+    <footer>
+
+        <span>&copy; &nbsp;Sussy AmonganeseSUS | All Pepe rights Reserved.</span>
+
+    </footer>
+
+    <!--script for comment/reply to the original post.-->
+
+    <script src="./js/main.js"></script>
+
+    </div>
+</body>
+
+</html>

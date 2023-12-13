@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
+    <title>Forum - Posts</title>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="wrapper">
+            <input type="checkbox" id="btn" hidden>
+            <label for="btn" class="menu-btn">
+                <img id="logo" class="logo"
+                    src="https://seeklogo.com/images/J/jv-jeux-video-logo-26350B04EC-seeklogo.com.png">
+            </label>
+            <nav id="sidebar">
+                <div class="titre">JVC Menu</div>
+                <ul class="list-items">
+                    <li><a href="/CreatePost"><i class="nav-list"></i>Create Post</a></li>
+                    <li><a href="/Likepost"><i class="nav-list"></i>Like post</a></li>
+                    <li><a href="/Dislikepost"><i class="nav-list"></i>Dislike post</a></li>                </ul>
+            </nav>
+        </div>
+
+        <div class="brand">
+            <div class="TetB">JVC V2
+                <button class="cobar">
+                    <li><a href="/main"><i class="nav-list"></i>Connexion</a></li>
+                </button>
+            </div>
+        </div>
+
+    </header>
+
+
+    <p id="a"><b>Welcome to the Forum</b></p>
+
+    <div class="container">
+
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search subjects...">
+            <button id="search-button">Search</button>
+        </div>
+
+        <div class="posts-table">
+            <div class="table-head">
+                <div class="status">Status</div>
+                <div class="subjects">Subjects</div>
+
+            </div>
+        </div>
+        {{ range .Row}}
+        <div class="table-row">
+            <div class="status"><i class="fa fa-fire"></i></div>
+            <div class="subjects"><a href="./detail?{{.ID}}">{{.Title}}</a>
+                <br>
+                <span>Started by <b> <a href="./detail?{{.ID}}">{{.Username}}</a></b>.</span>
+            </div>
+        </div>
+
+        {{end}}
+
+     
+
+        <script src="js/main.js"></script>
+        <script src="js/cookie.js"></script>
+
+        <script>
+
+
+    const searchButton = document.getElementById('search-button');
+    const searchInput = document.getElementById('search-input');
+
+    searchButton.addEventListener('click', () =>{
+    const searchTerm = searchInput.value.toLowerCase();
+        const tableRows = document.getElementsByClassName('table-row');
+
+        for (let i = 0; i < tableRows.length; i++) {
+            const subjectText = tableRows[i].getElementsByClassName('subjects')[0].textContent.toLowerCase();
+
+            if (subjectText.includes(searchTerm)) {
+                tableRows[i].style.display = 'block';
+            } else {
+                tableRows[i].style.display = 'none';
+            }
+        }
+    });
+        </script>
+
+
+    </div>
+
+</body>
+
+<footer>
+
+    <span>&copy; &nbsp;Le groupe de l'élite | Tous droits réservé</span>
+
+</footer>
+
+</html>

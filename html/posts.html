@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
+    <title>Forum - Posts</title>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="wrapper">
+            <input type="checkbox" id="btn" hidden>
+            <label for="btn" class="menu-btn">
+                <img id="logo" class="logo"
+                    src="https://seeklogo.com/images/J/jv-jeux-video-logo-26350B04EC-seeklogo.com.png">
+            </label>
+            <nav id="sidebar">
+                <div class="titre">JVC Menu</div>
+                <ul class="list-items">
+                    <li><a href="/HomePage"><i class="nav-list"></i>Home</a></li>
+                    <li><a href="/CreatePost"><i class="nav-list"></i>Create Post</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="navbar">
+            <nav class="navigation hide" id="navigation">
+                <ul class="nav-list">
+                    <span class="close-icon" onclick="showIconBar()"><i class="fa fa-close"></i></span>
+                    <li class="nav-item">
+                        <a href="./html/HomePage.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./posts.html">Forum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./detail.html">Detail</a>
+                    </li>
+                </ul>
+            </nav>
+            <a href="#" class="bar-icon" id="iconBar" onclick="hideIconBar()"><i class="fa fa-bars"></i></a>
+            <div class="brand">My Forum</div>
+
+            <!--Search Box-->
+
+            <div class="search-box">
+                <div>
+                    <select name="" id="">
+                        <option value="everything">Everything</option>
+                        <option value="titles">Titles</option>
+                        <option value="descriptions">Descriptions</option>
+                    </select>
+                    <input type="text" name="q" id="" placeholder="search ...">
+                    <button><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+    </header>
+
+
+    <p id="a"><b>Welcome to the Forum</b></p>
+
+    <div class="container">
+
+        <!--Navigation-->
+
+        <div class="navigate">
+            <span><a href="#">My Forum - Forums</a> >> <a href="#">Random topic</a></span>
+        </div>
+
+        <div class="posts-table">
+            <div class="table-head">
+                <div class="status">Status</div>
+                <div class="subjects">Subjects</div>
+                <div class="replies">Replies/Views</div>
+                <div class="last-reply">last Reply</div>
+            </div>
+        </div>
+        <div class="table-row">
+            {{range .Row}}
+            <div class="status"><i class="fa fa-fire"></i></div>
+            <div class="subjects"><a href="/detail.html">{{.Title}}</a>
+                <br>
+                <span>Started by <b> <a href="/detail.html">{{.Username}}</a></b>.</span>
+            </div>
+
+            <div class="replies">
+                69 replies <br>3639 views
+            </div>
+            <div class="last-reply">
+                Dec 31 1999
+                <br>
+                By <b><a href="#">{{.Username}}</a></b>
+            </div>
+        </div>
+
+        <div class="pagination">
+            pages: <a href="#">1</a> <a href="#">2</a> <a href="#">3</a>
+        </div>
+
+        <!--Status note-->
+
+        <div class="note">
+            <span>
+                <i class="fa fa-frown-o"></i>&nbsp; 0 Engagement Topic <br>
+            </span>
+            <span>
+                <i class="fa fa-book"></i>&nbsp; Low Engagement Topic <br>
+            </span>
+            <span>
+                <i class="fa fa-fire"></i>&nbsp; Popular Engagement Topic <br>
+            </span>
+            <span>
+                <i class="fa fa-rocket"></i>&nbsp; High Engagement Topic <br>
+            </span>
+            <span>
+                <i class="fa fa-lock"></i>&nbsp; Closed Topic <br>
+            </span>
+        </div>
+
+        <div class="setup-like">
+            <span> <u>1702</u> <img src="https://thumbs.gfycat.com/ConsciousBitesizedElver-size_restricted.gif" alt="">
+                and <u>69</u> <img src="https://media.tenor.com/QkxQpy6gyNgAAAAC/outta-pocket-breakingbad.gif"
+                    font-size="5px"></span>
+        </div>
+
+        <footer>
+
+            <span>&copy; &nbsp;Sussy AmonganeseSUS | All Pepe rights Reserved.</span>
+
+        </footer>
+
+        <script src="main.js"></script>
+
+
+    </div>
+
+</body>
+
+</html>

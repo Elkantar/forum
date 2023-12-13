@@ -1,0 +1,95 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/Home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
+    <title>Forum - Posts</title>
+    <link rel="shortcut icon" type="image/png" href="../Images/LogoJVC.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body>
+
+    <header>
+
+        <div class="wrapper">
+            <input type="checkbox" id="btn" hidden>
+            <label for="btn" class="menu-btn">
+                <img id="logo" class="logo"
+                    src="https://seeklogo.com/images/J/jv-jeux-video-logo-26350B04EC-seeklogo.com.png">
+            </label>
+            <nav id="sidebar">
+                <div class="titre">JVC Menu</div>
+                <ul class="list-items">
+                    <li><a href="/HomePage"><i class="nav-list"></i>Home</a></li>
+                    <li><a href="/CreatePost"><i class="nav-list"></i>Create Post</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="navbar">
+
+
+            <div class="brand"> JVC Forum</div>
+
+
+    </header>
+
+
+    <p id="a"><b>Welcome to the Forum</b></p>
+
+    <div class="container">
+
+        <script>
+            function toggleUpload() {
+                var checkbox = document.getElementById("uploadCheckbox");
+                var uploadFileInput = document.getElementById("uploadFileInput");
+                var checker = document.getElementById("checker");
+                var form = document.getElementById("postForm");
+
+                if (checkbox.checked) {
+                    uploadFileInput.style.display = "block";
+                    checker.value = "on";
+                    form.setAttribute("enctype", "multipart/form-data"); // Ajoute l'attribut enctype
+                } else {
+                    uploadFileInput.style.display = "none";
+                    checker.value = "off";
+                    form.removeAttribute("enctype"); // Supprime l'attribut enctype
+                }
+            }
+        </script>
+        <!--Post part-->
+        <form id="postForm" method="POST" action="./CreatePost">
+            <div class="title-box">
+                <textarea name="NewPostTitle" placeholder="Choose a title ..." class="title" maxlength="255"></textarea>
+            </div>
+            <br class="line">
+            <div class="write-box">
+                <textarea name="NewPostText" type="text" placeholder="Write something ..." class="write"></textarea>
+            </div>
+            <select name="Categorie" id="">
+                <option value="everything">Everything</option>
+                <option value="Video Game">Video Game</option>
+                <option value="Kenny News">Kenny News</option>
+                <option value="IDK">on ne savait pas quoi mettre</option>
+                <!-- <option value="nsfw">nsfw</option> a voir ce que l'on peut en faire -->
+            </select>
+            <input type="checkbox" id="uploadCheckbox" name="uploadCheckbox" onchange="toggleUpload()" />
+            Upload Image
+            <input type="hidden" id="checker" name="checker" value="off" />
+            <div id="uploadFileInput" style="display: none;">
+                <input type="file" name="NewPostImage" accept=".jpg, .jpeg, .png, .gif" />
+            </div>
+            <div class="send">
+                <input type="submit" name="Send" value="send">
+            </div>
+        </form>
+
+        <script src="js/main.js"></script>
+
+</body>

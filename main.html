@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="css/main.Css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JVC V2</title>
+    <link rel="shortcut icon" type="image/png" href="./Images/LogoJVC.png">
+
+</head>
+
+<body>
+
+    <div id="h2" data-value="{{.}}">{{.}}</div>
+
+    <script>
+        const h = document.getElementById("h2");
+    
+        function disp() {
+            if (h.innerHTML === "This user already exist" || h.innerHTML === "Error during login") {
+                h.style.display = "";
+            } else {
+                h.style.display = "none";
+            }
+        }
+        disp();
+    </script>
+
+<div class="header">
+    <!--Content before waves-->
+    <div class="inner-header flex">
+    <!--Just the logo.. Don't mind this-->
+    <img id="logo" class="logo"  src="./Images/LogoJVC.png">
+
+    <div id="h2">
+    <h2>JVC V2</h2>
+    </div>
+    
+ 
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+    crossorigin="anonymous">
+    
+
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form method="POST" action="/main">
+                <h1>Create Account</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>   
+                </div>
+                <span>or use your email for registration</span>
+                <input name="name" type="text" placeholder="Name" />
+                <input name="email" type="email" placeholder="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|fr)$" required/>
+                <input name="password" type="password" placeholder="Password" />
+                <input type="submit"  name="Sign-in-Button" value="Sign In"/>
+
+               
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form method="POST" action="/main">
+                <h1>Sign in</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your account</span>
+                <input name="Sign-in-mail" type="email" placeholder="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|fr)$" required />
+                <input name="Sign-in-password" type="password" placeholder="Password" />
+                <a href="#">Forgot your password?</a>
+                <input type="submit"  name="Sign-in-Button" value="Sign In"/>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const signUpButton = document.getElementById('signUp');
+            const signInButton = document.getElementById('signIn');
+            const container = document.getElementById('container');
+
+            signUpButton.addEventListener('click', () => {
+                container.classList.add("right-panel-active");
+            });
+
+            signInButton.addEventListener('click', () => {
+                container.classList.remove("right-panel-active");
+            });
+        </script>
+    </div>
+
+     <!--Waves Container-->
+     <div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+        <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+        </g>
+        </svg>
+        </div>
+        <!--Waves end-->
+        
+        </div>
+        <!--Header ends-->
+
+
+            <!--Content starts-->
+    <div class="content flex">
+    </div>
+    <!--Content ends-->
+
+    <!-- <section class="rain"></section> --> 
+    <div class="stars">
+    <span class="star"></span>
+    <span class="star pink"></span>
+    <span class="star blue"></span>
+    <span class="star yellow"></span>
+    </div>
+
+        <script>
+            const signUpButton = document.getElementById('signUp');
+            const signInButton = document.getElementById('signIn');
+            const container = document.getElementById('container');
+
+            signUpButton.addEventListener('click', () => {
+                container.classList.add("right-panel-active");
+            });
+
+            signInButton.addEventListener('click', () => {
+                container.classList.remove("right-panel-active");
+
+            });
+            const logo = document.getElementById('logo')
+
+            logo.onclick = function myFunction() {
+  location.replace("http://localhost:8050/Log")
+}
+        </script>
+    </div>
+
+    <footer>
+        <p>
+            Created with <i class="fa fa-heart"></i> by
+            <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+            - Read how I created this and how you can join the challenge
+            <a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
+        </p>
+    </footer>
+
+
+    <script src="js/cookie.js"></script>
+    <a href="/HomePage" class="boutinv">Invité</a>
+</body>
+
+</html>
